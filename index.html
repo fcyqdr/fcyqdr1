@@ -9,29 +9,38 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-image: url('背景4.jpg'); /* 替换为你的图片URL */
-            background-size: cover; /* 确保铺满 */
-            background-position: center; /* 居中对齐 */
-            background-repeat: no-repeat; /* 不重复 */
-            margin: 0; /* 移除外边距 */
-            padding: 0; /* 移除内边距 */
-            height: 100vh; /* 确保body高度充满视口 */
-            overflow: hidden; /* 防止滚动条影响 */
+            background-image: url('https://via.placeholder.com/1920x1080'); /* 默认背景图片 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            transition: background-image 1s ease, background-color 0.5s ease; /* 平滑过渡 */
+        }
+        body.dark-mode {
+            background-color: #1a1a1a; /* 深色模式默认背景 */
+        }
+        body.light-mode {
+            background-color: #f0f0f0; /* 浅色模式默认背景 */
         }
         h1 {
             font-family: 'Ma Shan Zheng', cursive;
-            font-size: 36px;
-            color: #ffD700;
+            font-size: 72px;
+            color: #ff0000;
             animation: wave 2s infinite;
             position: relative;
             display: inline-block;
-            padding: 20px; /* 给标题添加内边距以避免贴边 */
-            background: rgba(0, 0, 0, 0.5); /* 半透明背景增强可读性 */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
         }
         ul {
             list-style-type: none;
             padding: 0;
-            z-index: 10; /* 确保内容在开门效果上方 */
+            z-index: 10;
         }
         li {
             margin: 15px 0;
@@ -41,14 +50,14 @@
         }
         a {
             text-decoration: none;
-            color: #87CEEB;
-            font-size: 18px;
+            color: #00FF00;
+            font-size: 24px;
             transition: color 0.3s;
-            background: rgba(0, 0, 0, 0.5); /* 半透明背景增强可读性 */
-            padding: 5px 10px; /* 给链接添加内边距 */
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
         }
         a:hover {
-            color: #4B0082;
+            color: #00cc00;
         }
         .door {
             position: fixed;
@@ -95,5 +104,43 @@
         <li style="--i: 4;"><a href="https://fcyqdr.github.io/fcyqdr/" target="_blank">👉🏻👉🏻❤️用力插入全新的世界❤️</a></li>
         <li style="--i: 5;"><a href="https://fcyqdr.github.io/fcyqdr/" target="_blank">👉🏻👉🏻❤️用力插入全新的世界❤️</a></li>
     </ul>
+
+    <script>
+        const backgrounds = [
+            '背景3.jpg', // 默认占位图1
+            '背景4.jpg', // 占位图2
+            '背景5.jpg'  // 占位图3
+            // 替换为你的实际图片URL
+        ];
+        let currentIndex = 0;
+
+        // 检测系统主题并应用
+        function setTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.remove('light-mode');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.classList.add('light-mode');
+            }
+        }
+
+        // 监听主题变化
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setTheme);
+
+        // 初始设置主题
+        setTheme();
+
+        function changeBackground() {
+            document.body.style.backgroundImage = `url('${backgrounds[currentIndex]}')`;
+            currentIndex = (currentIndex + 1) % backgrounds.length;
+        }
+
+        // 每2秒切换一次背景
+        setInterval(changeBackground, 5000);
+
+        // 页面加载时立即切换一次，确保动画生效
+        changeBackground();
+    </script>
 </body>
 </html>
