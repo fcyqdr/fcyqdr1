@@ -29,7 +29,7 @@
         h1 {
             font-family: 'Ma Shan Zheng', cursive;
             font-size: 72px;
-            color: #ffD700;
+            color: #FFD700;
             animation: wave 2s infinite;
             position: relative;
             display: inline-block;
@@ -44,9 +44,9 @@
         }
         li {
             margin: 15px 0;
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
-            animation-delay: calc(0.2s * var(--i));
+            opacity: 1; /* 移除淡入效果，直接显示 */
+            animation: glow 2s infinite; /* 闪动发光动画 */
+            animation-delay: calc(0.2s * var(--i)); /* 逐条延迟 */
         }
         a {
             text-decoration: none;
@@ -55,6 +55,7 @@
             transition: color 0.3s;
             background: rgba(0, 0, 0, 0.5);
             padding: 5px 10px;
+            display: inline-block; /* 确保发光效果应用到整个链接 */
         }
         a:hover {
             color: #00cc00;
@@ -79,9 +80,19 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #87CEEB, 0 0 10px #87CEEB, 0 0 15px #00FFFF; /* 初始发光 */
+                text-shadow: 0 0 5px #87CEEB, 0 0 10px #00FFFF;
+            }
+            50% {
+                box-shadow: 0 0 10px #87CEEB, 0 0 20px #00FFFF, 0 0 30px #00FFFF; /* 增强发光 */
+                text-shadow: 0 0 10px #87CEEB, 0 0 20px #00FFFF;
+            }
+            100% {
+                box-shadow: 0 0 5px #87CEEB, 0 0 10px #87CEEB, 0 0 15px #00FFFF; /* 回到初始 */
+                text-shadow: 0 0 5px #87CEEB, 0 0 10px #00FFFF;
+            }
         }
         @keyframes openLeft {
             from { transform: translateX(0); }
@@ -136,7 +147,7 @@
             currentIndex = (currentIndex + 1) % backgrounds.length;
         }
 
-        // 每2秒切换一次背景
+        // 每5秒切换一次背景
         setInterval(changeBackground, 5000);
 
         // 页面加载时立即切换一次，确保动画生效
