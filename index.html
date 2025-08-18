@@ -5,29 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>备用转接页面</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap'); /* 毛笔字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap');
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-image: url('背景4.jpg'); /* 自定义背景图片 */
-            background-size: cover; /* 图片铺满整个背景 */
-            background-position: center; /* 图片居中 */
+            background-image: url('背景4.jpg'); /* 替换为你的图片URL */
+            background-size: cover; /* 确保铺满 */
+            background-position: center; /* 居中对齐 */
             background-repeat: no-repeat; /* 不重复 */
-            margin: 0;
-            padding: 20px;
-            overflow: hidden;
+            margin: 0; /* 移除外边距 */
+            padding: 0; /* 移除内边距 */
+            height: 100vh; /* 确保body高度充满视口 */
+            overflow: hidden; /* 防止滚动条影响 */
         }
         h1 {
-            font-family: 'Ma Shan Zheng', cursive; /* 毛笔字体 */
+            font-family: 'Ma Shan Zheng', cursive;
             font-size: 36px;
-            color: #ff0000; /* 红色 */
-            animation: wave 2s infinite; /* 波浪动画 */
+            color: #ff0000;
+            animation: wave 2s infinite;
             position: relative;
             display: inline-block;
+            padding: 20px; /* 给标题添加内边距以避免贴边 */
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景增强可读性 */
         }
         ul {
             list-style-type: none;
             padding: 0;
+            z-index: 10; /* 确保内容在开门效果上方 */
         }
         li {
             margin: 15px 0;
@@ -37,20 +41,21 @@
         }
         a {
             text-decoration: none;
-            color: #00FF00; /* 绿色字体 */
+            color: #00FF00;
             font-size: 18px;
             transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景增强可读性 */
+            padding: 5px 10px; /* 给链接添加内边距 */
         }
         a:hover {
             color: #00cc00;
         }
-        /* 开门效果背景 */
         .door {
             position: fixed;
             top: 0;
             width: 50%;
             height: 100%;
-            background-color: #2F4F4F; /* 墨绿色背景 */
+            background-color: #2F4F4F;
             z-index: 1000;
         }
         .door-left {
@@ -61,50 +66,27 @@
             right: 0;
             animation: openRight 5s ease-out forwards;
         }
-        /* 标题波浪动画 */
         @keyframes wave {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-        /* 条目淡入动画 */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        /* 开门动画 */
         @keyframes openLeft {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(-100%);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
         }
         @keyframes openRight {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(100%);
-            }
+            from { transform: translateX(0); }
+            to { transform: translateX(100%); }
         }
     </style>
 </head>
 <body>
-    <!-- 开门效果的两个div -->
     <div class="door door-left"></div>
     <div class="door door-right"></div>
-    <!-- 页面内容 -->
     <h1>备用转接</h1>
     <ul>
         <li style="--i: 1;"><a href="https://example.com/link1" target="_blank">条目 1 - 备用链接</a></li>
