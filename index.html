@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>备用转接页面</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap'); /* 毛笔字体 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('https://via.placeholder.com/1920x1080'); /* 自定义背景图片 */
+            background-size: cover; /* 图片铺满整个背景 */
+            background-position: center; /* 图片居中 */
+            background-repeat: no-repeat; /* 不重复 */
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive; /* 毛笔字体 */
+            font-size: 36px;
+            color: #ff0000; /* 红色 */
+            animation: wave 2s infinite; /* 波浪动画 */
+            position: relative;
+            display: inline-block;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 15px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+        a {
+            text-decoration: none;
+            color: #00FF00; /* 绿色字体 */
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #00cc00;
+        }
+        /* 开门效果背景 */
+        .door {
+            position: fixed;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-color: #2F4F4F; /* 墨绿色背景 */
+            z-index: 1000;
+        }
+        .door-left {
+            left: 0;
+            animation: openLeft 5s ease-out forwards;
+        }
+        .door-right {
+            right: 0;
+            animation: openRight 5s ease-out forwards;
+        }
+        /* 标题波浪动画 */
+        @keyframes wave {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        /* 条目淡入动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* 开门动画 */
+        @keyframes openLeft {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        @keyframes openRight {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 开门效果的两个div -->
+    <div class="door door-left"></div>
+    <div class="door door-right"></div>
+    <!-- 页面内容 -->
+    <h1>备用转接</h1>
+    <ul>
+        <li style="--i: 1;"><a href="https://example.com/link1" target="_blank">条目 1 - 备用链接</a></li>
+        <li style="--i: 2;"><a href="https://example.com/link2" target="_blank">条目 2 - 备用链接</a></li>
+        <li style="--i: 3;"><a href="https://example.com/link3" target="_blank">条目 3 - 备用链接</a></li>
+        <li style="--i: 4;"><a href="https://example.com/link4" target="_blank">条目 4 - 备用链接</a></li>
+        <li style="--i: 5;"><a href="https://example.com/link5" target="_blank">条目 5 - 备用链接</a></li>
+    </ul>
+</body>
+</html>
